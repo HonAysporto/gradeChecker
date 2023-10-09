@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeChecker</title>
+    <link rel="stylesheet" href="/gradeChecker.css">
+</head>
+<body>
+    <div class="main">
+        <h1>Grade checking system</h1>
+        <h2>Enter Your Grade  </h2>
+        <input id="input" type="text" placeholder="Enter your score">
+        <button onclick="run()">Check</button>
+        <div style="margin-top: 20px;" id="result"></div>
+    </div>
+
+
+    <script>
+        var resultEl = document.getElementById('result')
+        var inputEl = document.getElementById('input');
+        
+        
+        inputEl.addEventListener('keydown', function(key) {
+            if (key.code === "Enter") {
+                run()
+            }
+        })
+   
+        function run() {
+            
+            var failureSound = new Audio('yaf.mp3');
+            var mockeryLaughter = new Audio('ml.mp3');
+            var clap = new Audio("clap.wav");
+            if (input.value >= 70 && input.value <= 100  ) {
+                clap.play();
+                
+                result.innerHTML = 'A' + ": Excellent 😎 "
+            } else if (input.value >= 60 && input.value < 70 ) {
+                
+                resultEl.innerHTML = 'B' + ": Very Good 👍"
+            } else if (input.value >= 50 && input.value < 60 ) {
+               
+                resultEl.innerHTML = 'C ' + ": Average there is room for improvement🙃"
+            } else if  (input.value >= 45 && input.value < 50 ) {
+                resultEl.innerHTML = ('D' + ": You no do well o, but you sef try 😏")
+            }  else if (input.value >= 40 && input.value < 45 ) {
+                resultEl.innerHTML = ('E' + ": See your life,There is fire on the montain bro 😕🔥")
+            }  else if (input.value >= 0 && input.value < 40 ) {
+                resultEl.innerHTML = ('F' + "  Failure 🙆‍♀️")
+                failureSound.play();
+                mockeryLaughter.play();
+                    
+            } else {
+                resultEl.innerHTML = ('BABA Enter correct grade')
+            }
+        }
+    </script>
+</body>
+</html>
